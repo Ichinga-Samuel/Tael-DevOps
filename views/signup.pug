@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    div.row.row-cols-auto.mt-5.shell
+        div.col-auto.mx-auto.mt-5
+            h5 Create Account
+            form(action="/users/create" method='POST')
+                div.mb-3
+                    p.form-text#error
+                div.mb-3
+                    label(for='nm' class="form-label") Name
+                    input(type='text' id="nm" name="name" class="form-control" required)
+                div.mb-3
+                    label(for='em' class="form-label") Email
+                    input(type='email' id="em" name="email" class="form-control" required)
+                div.mb-3.row.row-cols-2
+                    div.col
+                        label(for='pwd' class="form-label") Password
+                        input(type='password' id="pwd" name="password" class="form-control" required)
+                    div.col
+                        label(for='cpwd' class="form-label") Confirm Password
+                        input(type='password' id="cpwd" name="cpassword" class="form-control" required)
+                div.mb-3
+                    button(type='submit' id='login' class="btn btn-primary px-1") Create
+            h6 Already registered? #[a(href="/auth/login") Login]
+    script(src='/js/validate.js')

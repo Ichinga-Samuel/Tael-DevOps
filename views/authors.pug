@@ -1,0 +1,39 @@
+extends layout
+block title
+    title Add Author
+block content
+    div.row.mt-5.mb-3
+        div.col-sm-auto.col-md-6.mx-auto
+            form(action="/upload/author" enctype="multipart/form-data" method="POST" id="form2")
+                div.mb-2
+                    label(for="uploader" class="form-label") Select image of author
+                    input(type="file" id="uploader" class="form-control" name='author' required)
+                div.row.mb-2
+                    div.col-sm-auto.col-md-6
+                        label(for="fn" class="form-label") First Name
+                        input(type="text" name="firstname" id="fn" class="form-control" placeholder="First Name" autocomplete required)
+                    div.col-sm-auto.col-md-6
+                        label(for="ln" class="form-label") Last Name
+                        input(type="text" id="ln" name="lastname" placeholder="Last Name" autocomplete class="form-control" required)
+                div.mb-2
+                    label(for="bd" class="form-label") Birthday
+                    input(type="date" id="bd" class="form-control" name="birthdate" autocomplete required)
+                div.mb-2
+                    label(for="co" class="form-label") Country
+                    select(name="country" id="co" class="form-select")
+                        each val,i in countries
+                            option(value=val)=val
+                div.mb-2
+                    label(for="gd" class="form-label") Gender
+                    select(name="gender" id="gd" class="form-select")
+                        option(value="Female") Female
+                        option(value="Male") Male
+                div.mb-2
+                    label(for="bio" class="form-label") Bio
+                    textarea(name="bio" id="bio" class="form-control" required rows=5)
+                div.mt-2
+                    button(type="submit" class='btn btn-primary rounded-1 px-1') Submit
+
+
+
+

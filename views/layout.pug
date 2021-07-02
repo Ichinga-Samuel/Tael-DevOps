@@ -1,0 +1,46 @@
+doctype html
+html
+  head
+    block title
+      title Home
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel="icon" type="image/x-icon" href="/images/favicon.ico")
+
+  body(class="")
+    block header
+      header
+        nav.navbar.navbar-expand-lg
+          div.container
+            a(class="navbar-brand" href="/") TAEL
+            button(class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navid")
+              span(class="navbar-toggler-icon")
+            div.collapse.navbar-collapse#navid
+              div.navbar-nav.mb-lg-0.body-col.me-auto
+                div.nav-item
+                  a(href="/api/guide" class="nav-link") API
+                if resp.isAdmin
+                  div.nav-item
+                    a(href="/upload/book" class="nav-link") Book
+                  div.nav-item
+                    a(href="/upload/author" class="nav-link") Author
+              div.navbar-nav.mb-lg-0
+                unless resp.isAuthenticated
+                  div.nav-item
+                    a(href="/auth/login" class="nav-link ") Sign in
+                else
+                  div.nav-item.dropdown
+                    a(href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false") #{resp.name}
+                    ul(class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown")
+                      li
+                        a(href=`/users/profile/${resp.id}` class="dropdown-item") Profile
+                      li
+                        a(href="/auth/logout" class="dropdown-item") Logout
+    block content
+    block footer
+      footer.container-fluid
+        div.col-auto.py-2
+          p.text-center.mx-auto.my-auto Copyright © 2019 The African Ebook Library
+
+    script(src='/js/bootstrap.bundle.min.js')
+

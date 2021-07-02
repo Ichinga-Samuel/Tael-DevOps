@@ -1,0 +1,209 @@
+extends layout
+
+block title
+    title TAEL API Docs
+
+block content
+    main.shell.mt-4
+        div.row
+            div.col-sm-auto.col-md-8.mx-auto.my-2
+                h5 The API Guide
+                p This Api Exposes Four primary Collections they are #[span(class="fst-italic text-capitalize") the user collection], #[span(class="fst-italic text-capitalize") the authors collection], #[span(class="fst-italic text-capitalize") the reviews collection] and #[span(class="fst-italic text-capitalize") the user collection]
+
+        div.row.book
+            div.col-sm-auto.col-md-8.mx-auto.my-3
+                h2.h5 The Book collection
+                p The book collection is the primary collection of the api it describes the book and as well contain important properties of the book such as the file url of the book and its cover image. the the book api fields is shown in the table below.
+                table.table.table-dark.table-striped.table-responsive.tb
+                    thead
+                        tr
+                            th(scope="col") Field
+                            th(scope="col") Type
+                            th(scope="col") Default
+                            th(scope="col") Description
+                    tbody
+                        tr
+                            td title
+                            td String
+                            td None
+                            td The title of the book
+
+                        tr
+                            td language
+                            td String
+                            td English
+                            td The language the book is written in. For now most books available are written in English. So this is a reasonable default for ease of uploading.
+
+                        tr
+                            td year
+                            td Number
+                            td None
+                            td They year of first publication
+
+                        tr
+                            td genres
+                            td String[]
+                            td None
+                            td An array of strings useful for categorization recommendation and searching.
+
+                        tr
+                            td branch
+                            td String
+                            td None
+                            td Common values for branch is Novels, Short Stories, Essays, Poetry, Plays, Textbooks.
+
+                        tr
+                            td summary
+                            td String
+                            td None
+                            td A concise summary of the book
+
+                        tr
+                            td pages
+                            td Number
+                            td None
+                            td Number of pages in stand hardback version or pdf version. Use for sorting. Not always accurate.
+
+                        tr
+                            td fileUrl
+                            td String
+                            td None
+                            td File url of book for. File stored in google cloud storage
+
+                        tr
+                            td imageUrl
+                            td String
+                            td None
+                            td Image url of book cover. File stored in google cloud storage
+
+                        tr
+                            td fileType
+                            td String
+                            td None
+                            td File type of book. usually epub or pdf but can be any file format readable by modern ebook readers.
+
+                        tr
+                            td fileSize
+                            td Number
+                            td None
+                            td Size of book in bytes as retrieved from google cloud storage
+
+                        tr
+                            td ratings
+                            td Number
+                            td 3
+                            td Ratings of book by user from the front end. useful for sorting and book recommendation.
+
+                        tr
+                            td downloads
+                            td Number
+                            td 0
+                            td Number of downloads
+
+                        tr
+                            td authors
+                            td Array of Authors Collection Objects
+                            td None
+                            td Author(s) of the book
+
+                        tr
+                            td reviews
+                            td Virtual field to the reviews collection
+                            td None
+                            td Array of book review objects
+
+
+
+        div.row.author
+            div.col-sm-auto.col-md-8.my-2.mx-auto
+                h2.h5 The Authors Collection
+                    p This collection holds information about the authors
+                    table.table.table-dark.table-striped.table-responsive.tb
+                        thead
+                            tr
+                                th(scope="col") Field
+                                th(scope="col") Type
+                                th(scope="col") Default
+                                th(scope="col") Description
+                        tbody
+                            tr
+                                td name
+                                td String
+                                td None
+                                td Name of Author
+
+                            tr
+                                td country
+                                td String
+                                td None
+                                td Author's Country of origin
+
+                            tr
+                                td gender
+                                td String
+                                td None
+                                td gender of Author
+
+                            tr
+                                td birthdate
+                                td Date
+                                td None
+                                td Authors Birthday
+
+                            tr
+                                td bio
+                                td String
+                                td None
+                                td Brief Bio of Author
+
+                            tr
+                                td imageUrl
+                                td String
+                                td None
+                                td Image of Author
+                            tr
+                                td books
+                                td Array of Book collections Objects
+                                td None
+                                td Books by the author in the books collection
+        div.row
+            div.col-sm-auto.col-md-8.my-3.mx-auto
+                h2.h5 The Reviews Collection
+                p This Contains reviews made by users for the books. It is tied to the to books and users collection as only registered and logged in users can write reviews
+                table.table.table-dark.table-striped.table-responsive.tb
+                    thead
+                        tr
+                            th(scope="col") Field
+                            th(scope="col") Type
+                            th(scope="col") Default
+                            th(scope="col") Description
+                    tbody
+                        tr
+                            td review
+                            td String
+                            td None
+                            td Review of book left by a registered user
+
+                        tr
+                            td Name
+                            td String
+                            td None
+                            td Name of Reviewer
+
+                        tr
+                            td email
+                            td String
+                            td None
+                            td Email of Reviewer
+
+                        tr
+                            td email
+                            td String
+                            td None
+                            td Email of Reviewer
+
+                        tr
+                            td book
+                            td String
+                            td None
+                            td title of book reviewed

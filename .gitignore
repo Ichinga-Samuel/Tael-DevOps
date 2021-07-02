@@ -1,0 +1,9 @@
+node_modules/
+.idea/
+uploads/
+The African Ebook Library/
+bin/
+public/
+*.env
+*.json
+app.yaml

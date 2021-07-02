@@ -1,0 +1,53 @@
+extends layout
+
+block title
+  title Add Book
+block content
+  div.row.mt-5.shell.mb-5
+    div.col-sm-auto.col-md-6.mx-auto
+      h5 Upload Book to Database
+      form(action="/upload/book" method="POST" enctype="multipart/form-data" id="form1")
+        div.mb-2
+          label(for="uploader" class="form-label") Select book file and cover image
+          input(type="file" id="uploader" class="form-control" name='book' multiple required)
+
+        div.mb-2
+          label(for="title" class="form-label") Book Title
+          input(type="text" name="title" class="form-control" placeholder="title", id="title" autocomplete required)
+
+        div.row
+          div.col-sm-auto.col-md-4
+            label(for="br" class="form-label") Branch
+            input(type="text" name="branch" class="form-control" placeholder="eg. Novel" id="br" autocomplete required)
+
+          div.col-sm-auto.col-md-4
+            label(for="pg" class="form-label") Pages
+            input(type="number" name="pages" class="form-control" id="pg" autocomplete required)
+
+          div.col-sm-auto.col-md-4
+            label(for="la" class="form-label") Language
+            input(type="text" name="language" class="form-control" placeholder="eg. English" id="la" autocomplete required)
+
+        div.mb-2
+          label(for="aut" class="form-label") Author(s)
+          input(type="text" name="authors" placeholder="Author(s)" id="aut" class="form-control" autocomplete required)
+          div.form-text Separate authors with (,) if more than one
+
+        div.mb-2
+          label(for="yr" class="form-label") Year
+          input(type="number" id="yr" name="year" placeholder="Year Published" class="form-control" autocomplete required)
+
+        div.mb-2
+          label(for="gn" class="form-label") Enter the Genres
+          input(type='text', name='genres' id="gn" class='form-control' autocomplete required)
+          div.form-text Separate genres with (,) if more than one
+
+        div.mb-2
+          label(for="sr" class="form-label") Summary
+          textarea(class="form-control" placeholder="Brief Summary" name="summary" rows=5 id="sr" required)
+
+        div.mt-2
+          Button(type="submit" class='btn btn-primary px-1 rounded-1') Submit
+
+
+
