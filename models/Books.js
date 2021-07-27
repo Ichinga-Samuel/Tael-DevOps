@@ -20,11 +20,47 @@ const BookSchema = new mongoose.Schema({
     fileType: String,
     fileSize: {
         type: Number,
-
     },
     ratings: {
-        type: Number,
-        default: 3
+        type: mongoose.Mixed,
+        1:{
+            type: Number,
+            default: 1,
+        },
+        2:{
+            type: Number,
+            default: 1
+        },
+        3:{
+            type: Number,
+            default: 1,
+        },
+        4:{
+            type: Number,
+            default: 1,
+        },
+        5:{
+            type: Number,
+            default: 1,
+        },
+        get: function(r){
+            let items = Object.entries(r);
+            let s = 0;
+            let t = 0;
+            for(let [k,v] of items){
+                t += v;
+                s += v * parseInt(k);
+            }
+            return Math.round(s / t)
+        },
+        set: function(r){
+            if (!(this instanceof mongoose.Document)){
+                throw Error("Don't do this")
+            }else{
+                this.get('ratings', null, {getters: false})[r] = 1 + parseInt(this.get('ratings', null, {getters: false})[r])
+                return this.get('ratings', null, {getters: false})}
+
+        },
     },
     authors: [{
         type: mongoose.Schema.Types.ObjectID,
@@ -43,6 +79,5 @@ BookSchema.virtual('reviews', {
     justOne: false,
     options:{sort: {createdAt: 1}}
 });
-
 
 module.exports = mongoose.model('Books', BookSchema);

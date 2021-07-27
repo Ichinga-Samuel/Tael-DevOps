@@ -22,7 +22,7 @@ local(passport);
 // setting up config files
 dotenv.config({path:'./config/config.env'});
 
-const {setUser, isFront} = require('./routes/helpers/authenticate');
+const {setUser} = require('./routes/helpers/authenticate');
 
 const PORT = process.env.PORT || 5000;
 
@@ -62,7 +62,6 @@ app.use(passport.session());
 app.use(flash());
 
 app.use(setUser);
-app.use(isFront);
 app.use('/api', apiRouter);
 app.use('/', indexRouter);
 app.use('/upload', uploadRouter);

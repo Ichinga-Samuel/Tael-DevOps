@@ -8,7 +8,8 @@ module.exports = {
     local(passport) {
         passport.use(new LS({usernameField: 'email'}, async (username, password, done) => {
                 try {
-                    const user = await Users.findOne({email: username});
+                    let fields = {'name': 1, 'email': 1, 'fave': 1, 'reviews': 1, 'id': 1, password: 1};
+                    let user = await Users.findOne({email: username}).populate({path: 'fave', populate: {path: 'authors'}}).populate('reviews').select(fields);
                     if (!user) {
                         return done(null, false, {message: "User not found"});
                     }
@@ -27,7 +28,7 @@ module.exports = {
         })
         passport.deserializeUser(async (id, done) => {
             try {
-                const user = await Users.findById(id)
+                const user = await Users.findById(id);
                 return done (null, user)
             } catch (e) {
                 done(e)

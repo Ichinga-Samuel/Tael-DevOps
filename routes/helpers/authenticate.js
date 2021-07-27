@@ -1,13 +1,13 @@
 const User = require("../../models/Users");
 
 function setUser(req, res, next){
-    res.locals.resp = {name:'', id:'', isAdmin: false};
+    res.locals.user = {name:'', id:'', isAdmin: false};
     try{
         if(req.user && req.user._id){
-            res.locals.resp.isAuthenticated = true;
-            res.locals.resp.isAdmin = !!req.user.admin
-            res.locals.resp.name = req.user.name;
-            res.locals.resp.id = req.user._id;
+            res.locals.user.isAuthenticated = true;
+            res.locals.user.isAdmin = !!req.user.admin
+            res.locals.user = {...res.locals.user, ...req.user}
+            delete res.locals.user.password;
             return next()
         }
         res.locals.resp.isAuthenticated = false;
@@ -42,9 +42,6 @@ function isAdmin(req, res, next) {
     }
 }
 
-function isFront(req, res, next){
-    if('tael' in req.headers){req.tael = true}
-    return next()
-}
 
-module.exports = {setUser, isUser, isAdmin, isFront}
+
+module.exports = {setUser, isUser, isAdmin}

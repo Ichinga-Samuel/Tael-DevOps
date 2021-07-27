@@ -19,21 +19,21 @@ html
               div.navbar-nav.mb-lg-0.body-col.me-auto
                 div.nav-item
                   a(href="/api/guide" class="nav-link") API
-                if resp.isAdmin
+                if user.isAdmin
                   div.nav-item
                     a(href="/upload/book" class="nav-link") Book
                   div.nav-item
                     a(href="/upload/author" class="nav-link") Author
               div.navbar-nav.mb-lg-0
-                unless resp.isAuthenticated
+                unless user.isAuthenticated
                   div.nav-item
                     a(href="/auth/login" class="nav-link ") Sign in
                 else
                   div.nav-item.dropdown
-                    a(href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false") #{resp.name}
+                    a(href="#" class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false") #{user.name}
                     ul(class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown")
                       li
-                        a(href=`/users/profile/${resp.id}` class="dropdown-item") Profile
+                        a(href=`/users/profile/${user.id}` class="dropdown-item") Profile
                       li
                         a(href="/auth/logout" class="dropdown-item") Logout
     block content

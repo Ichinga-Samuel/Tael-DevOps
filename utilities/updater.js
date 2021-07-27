@@ -54,11 +54,35 @@ async function authorUpdater(update) {
 
 async function booksUpdater(){
     try{
-        await Book.updateMany({}, {$unset:{review: []}})
+        console.log('starting')
+        let b = await Book.updateMany({}, {ratings: 1}, {upsert: true});
+        console.log('complete', b.nModified, b.nMatched)
     }
     catch (e) {
-
+        console.log(e)
+    }
+    finally {
+        console.log('done');
+        process.exit(0);
     }
 }
-booksUpdater()
+
+async function updateRatings(){
+    try{
+        console.log('starting');
+        let books = await Book.updateMany({}, {ratings: {1:1, 2:1, 3:1, 4:1, 5:1}})
+        console.log(books.nModified)
+    }
+
+    catch (e) {
+            console.log(e)
+        }
+    finally {
+            console.log('done');
+            process.exit(0);
+        }
+}
+
+updateRatings()
+// booksUpdater()
 // authorUpdater(updates);

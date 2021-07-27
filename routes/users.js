@@ -9,16 +9,12 @@ router.post('/create', async (req, res, next) => {
   try {
     let user = req.body;
     user.password = genPwd(user.password);
-    delete user.cpassword
-    let succ = await Users.create(user);
-    // user = await Users.findById(succ.id).populate({path: 'fave', populate: {path: 'authors'}}).populate('reviews').select(fields);
-    if (succ && req.tael) {
-      res.status(201).send({msg: 'Account Created Successfully', status: true})
-    }
-    else{res.redirect('/login')}
+    delete user.cpassword;
+    await Users.create(user);
+    res.redirect('/login')
   }
   catch(e){
-    console.log(e)
+    res.locals.msg
     res.status(502).send({msg: 'Account Creation Was Not Successful', status: false});
   }
 
