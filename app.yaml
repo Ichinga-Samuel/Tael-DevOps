@@ -1,0 +1,15 @@
+runtime: nodejs14
+
+env_variables:
+  MONGO_URI: "mongodb+srv://TaelAdmin1:nwa0hanaEze@db-1.chxkp.mongodb.net/DB-1?retryWrites=true&w=majority"
+  GCS_BUCKET: "taelbucket1"
+  GCLOUD_PROJECT: "tael-313422"
+  GCS_KEYFILE: "config/tael-313422-f0de8e38a314.json"
+
+handlers:
+  - url: /public
+    static_dir: public
+
+  - url: /.*
+    script: auto
+

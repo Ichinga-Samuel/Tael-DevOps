@@ -10,7 +10,7 @@ function setUser(req, res, next){
             delete res.locals.user.password;
             return next()
         }
-        res.locals.resp.isAuthenticated = false;
+        res.locals.user.isAuthenticated = false;
         return next()
     }
     catch (e) {

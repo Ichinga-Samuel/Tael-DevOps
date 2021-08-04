@@ -1,0 +1,70 @@
+html {
+    box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.hr-or {
+    background-color: darkgoldenrod;
+    height: 4px;
+    margin: 0px !important;
+}
+
+body{
+    display: flex !important;
+    flex-direction: column !important;
+    background-color: #121212;
+    color: antiquewhite;
+}
+
+.shell{
+    flex: 1 0 auto !important;
+}
+
+footer{
+    flex-shrink: 0;
+    background-color: #212121;
+}
+
+.vision{
+    border-top: #F80 inset thick;
+    border-bottom: #F80 inset thick;
+    background-color: #1c1f23;
+}
+
+nav{
+    background-color: #1c1f23 !important;
+}
+
+.book{
+    background-color: #222222 !important;
+}
+
+.author{
+    background-color: #102A43 !important;
+}
+
+th, td{
+    text-transform: capitalize !important;
+    font-size: 12px;
+}
+
+table.tb th{
+    background-color: darkgoldenrod !important;
+}
+
+button{
+    background-color: darkgoldenrod !important;
+    color: white;
+}
+
+a{
+    color: darkgoldenrod !important;
+}

@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-const {genPwd, isValid} = require('../config/pass');
-
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
