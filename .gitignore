@@ -3,3 +3,7 @@ node_modules/
 uploads/
 The African Ebook Library/
 bin/
+public/
+*.env
+tael-313422-f0de8e38a314.json
+app.yaml

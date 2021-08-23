@@ -17,6 +17,8 @@ const connectDB = async () => {
 
     }
 };
+
+
 process.on('SIGINT', function() {
     mongoose.connection.close(function () {
         console.log('Mongoose disconnected through app termination');

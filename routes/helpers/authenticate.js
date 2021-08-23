@@ -1,5 +1,10 @@
 const User = require("../../models/Users");
 
+function test(req, res, next){
+    res.locals.test = {check:"will this work"}
+    return next()
+}
+
 function setUser(req, res, next){
     res.locals.user = {name:'', id:'', isAdmin: false};
     try{
@@ -20,7 +25,7 @@ function setUser(req, res, next){
 }
 
 async function isUser(req, res, next) {
-    if(req?.user?.id){return next}
+    if(req.user.id){return next}
     else {res.redirect('/auth/login')}
 }
 
@@ -44,4 +49,4 @@ function isAdmin(req, res, next) {
 
 
 
-module.exports = {setUser, isUser, isAdmin}
+module.exports = {setUser, isUser, isAdmin, test}

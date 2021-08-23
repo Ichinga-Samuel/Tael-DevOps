@@ -10,11 +10,12 @@
   "scripts": {
     "start": "node app",
     "dev": "cross-env NODE_ENV=development nodemon app",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --timeout 10000"
   },
   "dependencies": {
     "@google-cloud/storage": "^5.4.0",
     "@odusanya/african-countries": "^2.2.2",
+    "chai": "^4.3.4",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^3.2.0",
@@ -25,6 +26,7 @@
     "express": "~4.16.1",
     "express-session": "^1.17.1",
     "http-errors": "~1.6.3",
+    "mocha": "^9.0.3",
     "mongoose": "^5.10.11",
     "morgan": "~1.9.1",
     "multer": "^1.4.2",
@@ -35,6 +37,7 @@
     "pug": "2.0.0-beta11"
   },
   "devDependencies": {
+    "chai-http": "^4.3.0",
     "cross-env": "^7.0.2",
     "nodemon": "^2.0.4"
   }
