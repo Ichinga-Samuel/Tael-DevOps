@@ -4,6 +4,7 @@ on:
     branches: [master]
 jobs:
   deploy:
+    runs-on: ubuntu-latest
     steps:
     - name: Setup Cloud SDK
       uses: google-github-actions/setup-gcloud@v0.2.0
