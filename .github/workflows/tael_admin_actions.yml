@@ -6,8 +6,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: check
-      run: echo ${{env.project_id}}
+    - name: Check
+        run: echo ${{env.project_id}}
     - name: Checkout
       uses: actions/checkout@v2
     - name: Setup Cloud SDK
