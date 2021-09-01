@@ -2,6 +2,8 @@ name: Deploy Tael App
 on:
   push:
     branches: [master]
+env:
+    project_id: friendly-retina-276917
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -24,5 +26,4 @@ jobs:
           credentials: ${{ secrets.GCP_SA_KEY }}
           promote: false
           version: v1
-  env:
-    project_id: friendly-retina-276917
+  
