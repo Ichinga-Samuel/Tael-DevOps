@@ -8,9 +8,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: Load Config Files
         run: | 
           echo ${{secrets.CONFIG}} | base64 --decode > config/config.env
-      - name: Load Config Files
+          echo $(ls)
         run: cat config/config.env   
       - name: Setup Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.2.0
