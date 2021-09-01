@@ -8,11 +8,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        run: | 
+          echo ${{secrets.CONFIG}} | base64 --decode > config/config.env
+      - name: Load Config Files
+        run: cat config/config.env   
       - name: Setup Cloud SDK
         uses: google-github-actions/setup-gcloud@v0.2.0
         with:
           project_id: ${{secrets.GCP_PROJECT}}
-          service_account_key: ${{secrets.GCP_SA_KEY}}  
+          service_account_key: ${{secrets.GCP_SA_KEY}}
+      - name: See
+        run: echo $(ls)  
       - name: Deploy to App Engine  
         uses: google-github-actions/deploy-appengine@v0.2.0
         with:
