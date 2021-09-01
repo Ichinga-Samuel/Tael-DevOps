@@ -1,9 +1,5 @@
 runtime: nodejs14
 
-env_variables:
-  GCLOUD_PROJECT: "friendly-retina-276917"
-  GCS_KEYFILE: "config/tael-313422-f0de8e38a314.json"
-
 handlers:
   - url: /public
     static_dir: public
